@@ -5,9 +5,17 @@ import path from "path";
 import type { Painting } from "@david/shared";
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT ?? 3001;
 
-app.use(cors());
+const allowedOrigins = ["http://localhost:5173", process.env.WEB_URL].filter(
+	Boolean,
+) as string[];
+
+app.use(
+	cors({
+		origin: allowedOrigins,
+	}),
+);
 app.use(express.json());
 
 const galleriesDir = path.resolve(process.cwd(), "../../content/galleries");
