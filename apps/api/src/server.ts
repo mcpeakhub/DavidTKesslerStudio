@@ -16,7 +16,7 @@ const port = process.env.PORT ?? 3001;
 // 		origin: allowedOrigins,
 // 	}),
 // );
-app.options("*", cors());
+app.options(/.*/, cors());
 
 const allowedOrigins = [
 	"http://localhost:5173",
