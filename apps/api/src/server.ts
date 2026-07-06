@@ -7,13 +7,40 @@ import type { Painting } from "@david/shared";
 const app = express();
 const port = process.env.PORT ?? 3001;
 
-const allowedOrigins = ["http://localhost:5173", process.env.WEB_URL].filter(
-	Boolean,
-) as string[];
+// const allowedOrigins = ["http://localhost:5173", process.env.WEB_URL].filter(
+// 	Boolean,
+// ) as string[];
+
+// app.use(
+// 	cors({
+// 		origin: allowedOrigins,
+// 	}),
+// );
+app.options("*", cors());
+
+const allowedOrigins = [
+	"http://localhost:5173",
+	"https://davidtkesslerstudios.netlify.app",
+	process.env.WEB_URL,
+].filter(Boolean) as string[];
+
+app.use((req, _res, next) => {
+	console.log("Origin:", req.headers.origin);
+	console.log("Path:", req.path);
+	next();
+});
 
 app.use(
 	cors({
-		origin: allowedOrigins,
+		origin(origin, callback) {
+			if (!origin || allowedOrigins.includes(origin)) {
+				callback(null, true);
+				return;
+			}
+
+			console.warn("Blocked by CORS:", origin);
+			callback(new Error(`Not allowed by CORS: ${origin}`));
+		},
 	}),
 );
 app.use(express.json());
