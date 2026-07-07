@@ -46,8 +46,8 @@ app.use(
 app.use(express.json());
 
 const galleriesDir = path.resolve(process.cwd(), "../../content/galleries");
-const galleryIds = [0, 1, 2, 3, 4, 5, 6];
-const placeholderImage = "/images/placeholders/image-coming-soon.jpg";
+const galleryIds = [0, 1, 2, 3, 4, 5, 6, 7];
+// const placeholderImage = "/images/placeholders/image-coming-soon.jpg";
 
 async function readGallery(id: number): Promise<Painting[]> {
 	const galleryDir = path.join(galleriesDir, `gallery${id}`);

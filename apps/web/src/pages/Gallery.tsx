@@ -31,7 +31,7 @@ export default function Gallery() {
 					</p>
 
 					<h1 className="mt-3 text-5xl font-light tracking-wide text-gray-900 dark:text-zinc-100">
-						{title}
+						{galleryId === 7 ? " Corporate" : title}
 					</h1>
 
 					<p className="mx-auto mt-6 max-w-3xl leading-8 text-gray-600 dark:text-zinc-300">

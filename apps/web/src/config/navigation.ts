@@ -21,6 +21,7 @@ export const navigation: NavigationItem[] = [
 			{ title: "Gallery 4", path: "/gallery/4" },
 			{ title: "Gallery 5", path: "/gallery/5" },
 			{ title: "Gallery 6", path: "/gallery/6" },
+			{ title: "Corporate", path: "/gallery/7" },
 		],
 	},
 
