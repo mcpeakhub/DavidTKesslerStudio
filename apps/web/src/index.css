@@ -121,3 +121,21 @@ code {
 	padding: 4px 8px;
 	background: var(--code-bg);
 }
+
+.galleryCorporate {
+	display: grid;
+	grid-template-columns: repeat(1, minmax(0, 1fr));
+	gap: 3rem;
+}
+
+@media (min-width: 768px) {
+	.gallery {
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+	}
+}
+
+@media (min-width: 1280px) {
+	.gallery {
+		gap: 4rem;
+	}
+}
