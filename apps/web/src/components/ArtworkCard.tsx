@@ -4,16 +4,21 @@ import ArtworkImage from "./ArtworkImage";
 
 type ArtworkCardProps = {
 	painting: Painting;
+	galleryId: number;
 };
 
-export default function ArtworkCard({ painting }: ArtworkCardProps) {
+export default function ArtworkCard({ painting, galleryId }: ArtworkCardProps) {
 	return (
 		<Link to={`/painting/${painting.id}`} className="group block">
 			<div className="relative overflow-hidden rounded-lg bg-gray-100 shadow-sm dark:bg-zinc-900 dark:shadow-zinc-950">
 				<ArtworkImage
 					painting={painting}
 					loading="eager"
-					className="block h-auto w-full transition duration-700 group-hover:scale-[1.02]"
+					className={`block w-full transition duration-700 group-hover:scale-[1.02] ${
+						galleryId === 7
+							? "h-auto max-h-[85vh] object-contain mx-auto"
+							: "h-auto"
+					}`}
 				/>
 
 				{painting.sold && (

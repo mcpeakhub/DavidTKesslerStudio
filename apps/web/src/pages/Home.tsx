@@ -5,8 +5,9 @@ import { getPaintings } from "../services/api";
 import { galleries } from "../config/galleries";
 import { site } from "../config/site";
 import PageTransition from "../components/PageTransition";
-import ArtworkImage from "../components/ArtworkImage";
+// import ArtworkImage from "../components/ArtworkImage";
 import GalleryPreviewCard from "../components/GalleryPreviewCard";
+import HeroSlideshow from "../components/HeroSlideshow";
 
 export default function Home() {
 	const [paintings, setPaintings] = useState<Painting[]>([]);
@@ -15,13 +16,13 @@ export default function Home() {
 		getPaintings().then(setPaintings);
 	}, []);
 
-	const featured =
-		paintings.find((painting) => painting.featured) ?? paintings[0];
+	// const featured =
+	// 	paintings.find((painting) => painting.featured) ?? paintings[0];
 
 	return (
 		<PageTransition>
 			<div className="space-y-20">
-				{featured && (
+				{/* {featured && (
 					<section className="mx-auto max-w-6xl text-center">
 						<Link
 							to={`/painting/${featured.id}`}
@@ -36,7 +37,8 @@ export default function Home() {
 							</div>
 						</Link>
 					</section>
-				)}
+				)} */}
+				<HeroSlideshow paintings={paintings} />
 
 				<section className="mx-auto max-w-4xl pb-0 text-center">
 					<p className="text-sm uppercase tracking-[0.35em] text-gray-400 dark:text-zinc-500">

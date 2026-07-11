@@ -58,6 +58,7 @@ export default function Gallery() {
 							<ArtworkCard
 								key={painting.id}
 								painting={painting}
+								galleryId={galleryId}
 							/>
 						))}{" "}
 					</div>
