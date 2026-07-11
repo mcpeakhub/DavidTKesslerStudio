@@ -46,14 +46,7 @@ export default function Gallery() {
 						No paintings have been added to this gallery yet.
 					</p>
 				) : (
-					// <div className="grid grid-cols-1 gap-12 md:grid-cols-2 xl:gap-16">
-					<div
-						className={
-							galleryId === 7
-								? "galleryCorporate"
-								: "gagrid grid-cols-1 gap-12 md:grid-cols-2 xl:gap-16llery"
-						}
-					>
+					<div className="grid grid-cols-1 gap-12 md:grid-cols-2 xl:gap-16">
 						{paintings.map((painting) => (
 							<ArtworkCard
 								key={painting.id}
