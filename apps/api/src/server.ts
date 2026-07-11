@@ -25,8 +25,6 @@ const allowedOrigins = [
 ].filter(Boolean) as string[];
 
 app.use((req, _res, next) => {
-	console.log("Origin:", req.headers.origin);
-	console.log("Path:", req.path);
 	next();
 });
 

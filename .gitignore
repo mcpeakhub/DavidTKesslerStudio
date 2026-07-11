@@ -53,3 +53,6 @@ todo.txt
 # Backup files
 *.bak
 *.old
+
+# utility scripts
+scripts/
