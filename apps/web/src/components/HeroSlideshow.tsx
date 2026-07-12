@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { Painting } from "@david/shared";
 import ArtworkImage from "./ArtworkImage";
+import { AnimatePresence, motion } from "framer-motion";
 
 type HeroSlideshowProps = {
 	paintings: Painting[];
@@ -67,19 +68,33 @@ export default function HeroSlideshow({
 			onMouseLeave={() => setPaused(false)}
 			aria-label="Available paintings slideshow"
 		>
-			<div className="relative overflow-hidden rounded-xl bg-gray-100 shadow-sm dark:bg-zinc-900">
-				<Link
-					to={`/painting/${currentPainting.id}`}
-					className="block"
-					aria-label={`View ${currentPainting.title}`}
-				>
-					<ArtworkImage
-						painting={currentPainting}
-						loading="eager"
-						className="block h-[68vh] min-h-[420px] w-full object-contain"
-					/>
-				</Link>
-
+			<div className="relative h-[68vh] min-h-[420px] overflow-hidden rounded-xl bg-zinc-900">
+				// slideshow
+				<AnimatePresence initial={false}>
+					<motion.div
+						key={currentPainting.id}
+						className="absolute inset-0"
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						transition={{
+							duration: 1.2,
+							ease: "easeInOut",
+						}}
+					>
+						<Link
+							to={`/painting/${currentPainting.id}`}
+							className="block"
+							aria-label={`View ${currentPainting.title}`}
+						>
+							<ArtworkImage
+								painting={currentPainting}
+								loading="eager"
+								className="block h-[68vh] min-h-[420px] w-full object-contain"
+							/>
+						</Link>
+					</motion.div>
+				</AnimatePresence>
 				{availablePaintings.length > 1 && (
 					<>
 						<button
