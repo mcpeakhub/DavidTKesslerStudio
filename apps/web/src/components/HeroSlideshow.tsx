@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { Painting } from "@david/shared";
@@ -19,8 +19,27 @@ export default function HeroSlideshow({
 		[paintings],
 	);
 
-	const [currentIndex, setCurrentIndex] = useState(0);
+	const [currentIndex, setCurrentIndex] = useState(() => {
+		const savedIndex = sessionStorage.getItem("heroSlideshowIndex");
+		return savedIndex ? Number(savedIndex) : 0;
+	});
 	const [paused, setPaused] = useState(false);
+	const [pageVisible, setPageVisible] = useState(true);
+
+	useEffect(() => {
+		const handleVisibilityChange = () => {
+			setPageVisible(!document.hidden);
+		};
+
+		document.addEventListener("visibilitychange", handleVisibilityChange);
+
+		return () => {
+			document.removeEventListener(
+				"visibilitychange",
+				handleVisibilityChange,
+			);
+		};
+	}, []);
 
 	const safeIndex =
 		availablePaintings.length === 0
@@ -28,7 +47,14 @@ export default function HeroSlideshow({
 			: currentIndex % availablePaintings.length;
 
 	useEffect(() => {
-		if (paused || availablePaintings.length <= 1) {
+		sessionStorage.setItem("heroSlideshowIndex", String(safeIndex));
+	}, [safeIndex]);
+
+	useEffect(() => {
+		const shouldRun =
+			pageVisible && !paused && availablePaintings.length > 1;
+
+		if (!shouldRun) {
 			return;
 		}
 
@@ -36,10 +62,8 @@ export default function HeroSlideshow({
 			setCurrentIndex((index) => (index + 1) % availablePaintings.length);
 		}, intervalMs);
 
-		return () => {
-			window.clearInterval(timer);
-		};
-	}, [availablePaintings.length, intervalMs, paused]);
+		return () => window.clearInterval(timer);
+	}, [pageVisible, paused, intervalMs, availablePaintings.length]);
 
 	if (availablePaintings.length === 0) {
 		return (
@@ -74,12 +98,12 @@ export default function HeroSlideshow({
 					<motion.div
 						key={currentPainting.id}
 						className="absolute inset-0"
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						exit={{ opacity: 0 }}
+						initial={{ opacity: 0, scale: 1.0 }}
+						animate={{ opacity: 1, scale: 1.02 }}
+						exit={{ opacity: 0, scale: 1.04 }}
 						transition={{
-							duration: 1.2,
-							ease: "easeInOut",
+							duration: 1.4,
+							ease: [0.4, 0, 0.2, 1],
 						}}
 					>
 						<Link
