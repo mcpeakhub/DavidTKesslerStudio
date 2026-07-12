@@ -18,7 +18,7 @@ export default function ArtworkMeta({
 			<p className="text-sm uppercase tracking-[0.2em] text-gray-500 dark:text-zinc-400">
 				{painting.medium}
 				{painting.dimensions ? ` · ${painting.dimensions}` : ""}
-				{painting.year ? ` · ${painting.year}` : ""}
+				{!painting.sold ? " · available" : ""}
 			</p>
 
 			{painting.sold && (
