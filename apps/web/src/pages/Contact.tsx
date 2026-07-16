@@ -37,12 +37,6 @@ const galleries = [
 		],
 		website: "https://www.plusonegallery.com",
 	},
-	// {
-	// 	name: "Sorrel Sky Gallery",
-	// 	phone: "(505) 501-6555",
-	// 	address: ["125 W. Palace Avenue", "Santa Fe, NM 87501"],
-	// 	website: "https://sorrelsky.com/artist/david-kessler",
-	// },
 	{
 		name: "Stricoff Fine Art Ltd.",
 		phone: "(212) 219-3977",

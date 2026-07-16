@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
+#root {
+	min-height: 100%;
+}
+
+body {
+	margin: 0;
+	background-color: white;
+}
+
+html.dark,
+html.dark body,
+html.dark #root {
+	background-color: black;
+}
+
 :root {
 	--text: #6b6375;
 	--text-h: #08060d;
@@ -71,10 +88,6 @@
 	.painting-detail-layout {
 		grid-template-columns: 1fr !important;
 	}
-}
-
-body {
-	margin: 0;
 }
 
 h1,

@@ -19,8 +19,8 @@ export default function Layout({ children }: { children: ReactNode }) {
 	const [open, setOpen] = useState(false);
 
 	return (
-		<div className="flex min-h-screen flex-col bg-white text-gray-900 transition-colors dark:bg-zinc-950 dark:text-zinc-100">
-			<header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur transition-colors dark:border-zinc-800 dark:bg-zinc-950/90">
+		<div className="flex min-h-screen flex-col bg-white text-gray-900 transition-colors dark:bg-black dark:text-zinc-100">
+			<header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur transition-colors dark:border-zinc-800 dark:bg-black/90">
 				<div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
 					<Link
 						to="/"
