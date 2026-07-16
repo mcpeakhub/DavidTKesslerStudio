@@ -42,7 +42,7 @@ export default function Home() {
 
 				<section className="mx-auto max-w-4xl pb-0 text-center">
 					<p className="text-sm uppercase tracking-[0.35em] text-gray-400 dark:text-zinc-500">
-						Contemporary Inspired Water Paintings
+						Contemporary Water Inspired Paintings
 					</p>
 
 					<h1 className="mt-4 text-5xl font-light tracking-wide text-gray-900 dark:text-zinc-100 md:text-7xl">
