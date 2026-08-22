@@ -16,28 +16,9 @@ export default function Home() {
 		getPaintings().then(setPaintings);
 	}, []);
 
-	// const featured =
-	// 	paintings.find((painting) => painting.featured) ?? paintings[0];
-
 	return (
 		<PageTransition>
 			<div className="space-y-20">
-				{/* {featured && (
-					<section className="mx-auto max-w-6xl text-center">
-						<Link
-							to={`/painting/${featured.id}`}
-							className="group block"
-						>
-							<div className="overflow-hidden rounded-xl bg-gray-100 shadow-sm dark:bg-zinc-900">
-								<ArtworkImage
-									painting={featured}
-									loading="eager"
-									className="block max-h-[78vh] w-full object-contain transition duration-700 group-hover:scale-[1.01]"
-								/>
-							</div>
-						</Link>
-					</section>
-				)} */}
 				<HeroSlideshow paintings={paintings} />
 
 				<section className="mx-auto max-w-4xl pb-0 text-center">
@@ -93,7 +74,12 @@ export default function Home() {
 											(painting) =>
 												painting.gallery === gallery.id,
 										);
-
+// console.log(
+//     gallery.title,
+//     gallery.id,
+//     galleryPaintings.length,
+//     galleryPaintings[0]
+// );
 							return (
 								<GalleryPreviewCard
 									key={gallery.id}

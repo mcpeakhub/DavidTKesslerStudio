@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { Painting } from "@david/shared";
@@ -93,7 +93,6 @@ export default function HeroSlideshow({
 			aria-label="Available paintings slideshow"
 		>
 			<div className="relative h-[68vh] min-h-[420px] overflow-hidden rounded-xl bg-zinc-900">
-				// slideshow
 				<AnimatePresence initial={false}>
 					<motion.div
 						key={currentPainting.id}

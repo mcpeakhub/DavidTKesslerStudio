@@ -7,15 +7,6 @@ import type { Painting } from "@david/shared";
 const app = express();
 const port = process.env.PORT ?? 3001;
 
-// const allowedOrigins = ["http://localhost:5173", process.env.WEB_URL].filter(
-// 	Boolean,
-// ) as string[];
-
-// app.use(
-// 	cors({
-// 		origin: allowedOrigins,
-// 	}),
-// );
 app.options(/.*/, cors());
 
 const allowedOrigins = [
@@ -45,7 +36,6 @@ app.use(express.json());
 
 const galleriesDir = path.resolve(process.cwd(), "../../content/galleries");
 const galleryIds = [0, 1, 2, 3, 4, 5, 6, 7];
-// const placeholderImage = "/images/placeholders/image-coming-soon.jpg";
 
 async function readGallery(id: number): Promise<Painting[]> {
 	const galleryDir = path.join(galleriesDir, `gallery${id}`);
