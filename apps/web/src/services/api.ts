@@ -12,8 +12,6 @@ const modules = import.meta.glob<PaintingModule>(
 );
 
 function loadPaintings(): Painting[] {
-	console.log("MODULE PATHS:", Object.keys(modules));
-
 	return Object.entries(modules).map(([path, module]) => {
 		const galleryMatch = path.match(/gallery(\d+)/);
 		const gallery = galleryMatch ? Number(galleryMatch[1]) : 0;
@@ -31,7 +29,6 @@ function loadPaintings(): Painting[] {
 }
 
 const paintings = loadPaintings();
-console.log("PAINTINGS:", paintings);
 
 export const getPaintings = async (): Promise<Painting[]> => {
 	return paintings;

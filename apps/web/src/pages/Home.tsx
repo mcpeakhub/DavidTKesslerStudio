@@ -74,12 +74,6 @@ export default function Home() {
 											(painting) =>
 												painting.gallery === gallery.id,
 										);
-// console.log(
-//     gallery.title,
-//     gallery.id,
-//     galleryPaintings.length,
-//     galleryPaintings[0]
-// );
 							return (
 								<GalleryPreviewCard
 									key={gallery.id}
