@@ -21,8 +21,10 @@ export default function ArtworkImage({
 			decoding="async"
 			onClick={onClick}
 			onError={(event) => {
-				event.currentTarget.src =
-					"/images/placeholders/image-coming-soon.jpg";
+				const image = event.currentTarget;
+
+				image.onerror = null;
+				image.src = "/images/placeholders/image-coming-soon.jpg";
 			}}
 			style={{
 				objectPosition: painting.objectPosition ?? "center center",
