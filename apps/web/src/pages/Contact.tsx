@@ -2,22 +2,10 @@ import PageTransition from "../components/PageTransition";
 
 const galleries = [
 	{
-		name: "1st Dibs",
-		phone: "(480) 946-6060",
-		address: ["215 E. Grant Street", "Phoenix, AZ 85004"],
-		website: "https://www.1stdibs.com/search/?q=david%20kessler",
-	},
-	{
 		name: "Dean Day Gallery",
 		phone: "(713) 520-1021",
 		address: ["2639 Colquitt St", "Houston, TX 77098"],
 		website: "https://www.deandaygallery.com/kessler-david",
-	},
-	{
-		name: "Etra Fine Art",
-		phone: "(305) 438-4383",
-		address: ["50 NE 40th Street", "Miami, FL 33137"],
-		website: "https://www.etrafineart.com",
 	},
 	{
 		name: "Mason Fine Art",
@@ -38,10 +26,10 @@ const galleries = [
 		website: "https://www.plusonegallery.com",
 	},
 	{
-		name: "Stricoff Fine Art Ltd.",
-		phone: "(212) 219-3977",
-		address: ["424 West Broadway", "New York, NY 10012"],
-		website: "https://www.singulart.com/en/search?q=David%20Kessler",
+		name: "West Broadway Gallery",
+		phone: "(646) 335-5155",
+		address: ["383 West Broadway", "New York, NY 10012"],
+		website: "By appointment only",
 	},
 ];
 
@@ -103,14 +91,18 @@ export default function Contact() {
 									</div>
 
 									<div className="pt-2">
-										<a
-											href={gallery.website}
-											target="_blank"
-											rel="noreferrer"
-											className="text-blue-600 hover:underline dark:text-blue-400"
-										>
-											Visit Website
-										</a>
+										{gallery.website?.startsWith("https") ? (
+											<a
+												href={gallery.website}
+												target="_blank"
+												rel="noreferrer"
+												className="text-blue-600 hover:underline dark:text-blue-400"
+											>
+												Visit Website
+											</a>
+										) : (
+											<span className="text-blue-600 dark:text-blue-300">By appointment only</span>
+										)}
 									</div>
 								</div>
 							</div>

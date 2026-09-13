@@ -2,6 +2,60 @@ import PageTransition from "../components/PageTransition";
 
 const exhibitions = [
 	{
+		year: "2025",
+		venues: ["Mason Fine Arts, Atlanta, GA"],
+	},
+	{
+		year: "2023",
+		venues: [
+			"PATH Museum, Atlanta, GA",
+			"West Broadway Gallery, New York, NY",
+		],
+	},
+	{
+		year: "2022",
+		venues: ["American Realism Today - New Britain Museum of American Art, New Britain, CT"],
+	},
+	{
+		year: "2020",
+		venues: ["Southwest Rising - Tucson Museum of Contemporary Art, Tucson, AZ"],
+	},
+	{
+		year: "2018, 2019",
+		venues: [
+			"50 Years of Realism, Photorealism to Virtual Reality, Centro Cultural Banco do Brasil, Sao Paulo, Brasilia, Rio de Janeiro, Brazil",
+		],
+	},
+	{
+		year: "2018",
+		venues: [
+			"Hiperrealisme - The Museu, Del Tabac, Andorra",
+			"Mason Fine Arts, Atlanta, GA",
+		],
+	},
+	{
+		year: "2017",
+		venues: ["Au Gallery, Boston, MA"],
+	},	
+	{
+		year: "2015",
+		venues: ["Mason Fine Arts, Atlanta, GA"],
+	},
+	{
+		year: "2014, 2015",
+		venues: [
+			"Stricoff Fine Art, New York, NY",
+		],
+	},
+	{
+		year: "2014",
+		venues: [
+			"Plus One Gallery, London, England",
+			"Sorrell Sky Gallery, Santa Fe, NM",
+			"The West Select, Phoenix Art Museum, Phoenix, AZ",
+		],
+	},
+	{
 		year: "2013",
 		venues: [
 			"Tucson Museum of Art, Tucson, AZ",
@@ -16,7 +70,7 @@ const exhibitions = [
 			"Etra Fine Art, Miami, FL",
 			"Art Basel, Miami, FL",
 		],
-	},
+	},	
 	{
 		year: "2011",
 		venues: ["Art Basel, Miami, FL", "Ogilvie-Pertl Gallery, Chicago, IL"],
