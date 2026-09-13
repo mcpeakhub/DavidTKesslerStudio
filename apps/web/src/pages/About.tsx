@@ -121,9 +121,9 @@ export default function About() {
 						</Link>
 						<Link
 							className="text-gray-700 hover:text-black dark:text-zinc-300 dark:hover:text-white"
-							to="/corporate"
+							to="/Commission"
 						>
-							Corporate Collections
+							Public Commissions
 						</Link>
 						<Link
 							className="text-gray-700 hover:text-black dark:text-zinc-300 dark:hover:text-white"

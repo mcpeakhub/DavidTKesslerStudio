@@ -30,7 +30,7 @@ export default function ArtworkMeta({
 			{painting.description && (
 				<p
 					className={`leading-8 text-gray-700 dark:text-zinc-300 ${
-						centered ? "mx-auto max-w-3xl text-left" : ""
+						centered ? "text-center" : ""
 					}`}
 				>
 					{painting.description}

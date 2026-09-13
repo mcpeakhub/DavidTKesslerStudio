@@ -38,6 +38,9 @@ export default function ArtworkCard({ painting, galleryId }: ArtworkCardProps) {
 					{painting.dimensions ? ` · ${painting.dimensions}` : ""}
 					{!painting.sold ? " · available" : ""}
 				</p>
+				<p className="mt-1 text-sm text-gray-400 dark:text-zinc-300">
+					{painting.publicCommission ? painting.description : ""}
+				</p>
 			</div>
 		</Link>
 	);

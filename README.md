@@ -56,11 +56,7 @@ content/
     galleries/
         gallery0/
         gallery1/
-        gallery2/
-        gallery3/
-        gallery4/
-        gallery5/
-        gallery6/
+        ...
 
 public/
     images/

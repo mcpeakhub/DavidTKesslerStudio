@@ -15,4 +15,5 @@ export type Painting = {
 	featured?: boolean;
 	dateAdded?: string;
 	objectPosition?: string;
+	publicCommission?: boolean;
 };
