@@ -51,6 +51,9 @@ export const getGallery = async (id: number): Promise<Painting[]> => {
 
 
 
+// This is the code for making a separate API call to get the paintings from a backend server. 
+// However, since we are now loading the paintings from local JSON files, this code is commented out. 
+// You can uncomment and use it if you decide to switch back to using an API.
 
 // import axios from "axios";
 // import type { Painting } from "@david/shared";

@@ -1,7 +1,11 @@
 {
 	"id": "luminous-rhythms-detail4",
 	"title": "Luminous Rhythms - close up 4",
+	"medium": "",
+	"dimensions": "",
+	"sold": false,
 	"originalImage": "luminous-rhythms-detail4.jpg",
 	"dateAdded": "2026-09-06",
-	"description": ""
+	"description": "",
+	"showIsAvailable": false
 }

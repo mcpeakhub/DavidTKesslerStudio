@@ -15,7 +15,7 @@ export default function HeroSlideshow({
 	intervalMs = 5000,
 }: HeroSlideshowProps) {
 	const availablePaintings = useMemo(
-		() => paintings.filter((painting) => !painting.sold),
+		() => paintings.filter((painting) => !painting.sold && painting.showIsAvailable !== false),
 		[paintings],
 	);
 

@@ -1,10 +1,11 @@
 {
 	"id": "luminous-rhythms-detail1",
 	"title": "Luminous Rhythms - close up 1",
-	"medium": "acrylic on abraded aluminum",
-	"dimensions": "60\" x 96\"",
+	"medium": "",
+	"dimensions": "",
 	"sold": false,
 	"originalImage": "luminous-rhythms-detail1.jpg",
 	"dateAdded": "2026-09-06",
-	"description": ""
+	"description": "",
+	"showIsAvailable": false
 }

@@ -36,7 +36,7 @@ export default function ArtworkCard({ painting, galleryId }: ArtworkCardProps) {
 				<p className="mt-1 text-sm text-gray-500 dark:text-zinc-400">
 					{painting.medium}
 					{painting.dimensions ? ` · ${painting.dimensions}` : ""}
-					{!painting.sold ? " · available" : ""}
+					{painting.sold ? "" : painting.showIsAvailable ? " · available" : ""}
 				</p>
 				<p className="mt-1 text-sm text-gray-400 dark:text-zinc-300">
 					{painting.publicCommission ? painting.description : ""}

@@ -16,4 +16,5 @@ export type Painting = {
 	dateAdded?: string;
 	objectPosition?: string;
 	publicCommission?: boolean;
+	showIsAvailable?: boolean;
 };
