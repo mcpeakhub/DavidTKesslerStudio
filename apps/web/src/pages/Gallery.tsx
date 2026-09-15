@@ -37,9 +37,8 @@ console.log("Paintings in Gallery component:", paintings);
 					</h1>
 
 					<p className="mx-auto mt-6 max-w-3xl leading-8 text-gray-600 dark:text-zinc-300">
-						{galleryId === 1
-							? "David’s newest water-inspired paintings."
-							: "Water-inspired contemporary paintings exploring reflection, movement, atmosphere, and light."}
+						{galleryId === 0 ? "In my current paintings, I incorporate mylar to further explore the concept of hybridization. In water paintings, for example, I manipulate the mylar to mimic patterns and movement within the water. Similar to the abraded aluminum areas, portions of the mylar are left untouched to define the image, while others are enhanced with transparent or opaque layers of paint." 
+						: "Water-inspired contemporary paintings exploring reflection, movement, atmosphere, and light."}
 					</p>
 				</header>
 
