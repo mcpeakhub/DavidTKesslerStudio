@@ -53,8 +53,8 @@ export default function Contact() {
 					</p>
 				</header>
 
-				<section className="mb-4 text-2xl font-light text-gray-900 dark:text-zinc-100">
-					<h2 className="mb-4 text-2xl font-light">Contact David</h2>
+				<section className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+					<h2 className="mb-4 text-2xl font-light text-gray-900 dark:text-zinc-100">Contact David</h2>
 
 					<p className="leading-8">
 						<a
