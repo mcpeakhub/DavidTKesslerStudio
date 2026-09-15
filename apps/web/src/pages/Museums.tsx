@@ -47,7 +47,7 @@ export default function Museums() {
 					</h1>
 
 					<p className="mx-auto max-w-2xl leading-8 text-gray-600 dark:text-zinc-300">
-						Museum collections featuring work by David T. Kessler.
+						Collections featuring work by David T. Kessler.
 					</p>
 				</header>
 
