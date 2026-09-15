@@ -6,6 +6,7 @@ export const galleries = [
 	{ id: 4, title: "Gallery IV" },
 	{ id: 5, title: "Gallery V" },
 	{ id: 6, title: "Gallery VI" },
+	{ id: 7, title: "Public Commissions" },
 	{ id: 8, title: "Gallery 1" },
 	{ id: 9, title: "Gallery 2" },
 	{ id: 10, title: "Gallery 3" },
