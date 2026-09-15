@@ -1,23 +1,19 @@
 import PageTransition from "../components/PageTransition";
 
 const museums = [
-	"Brooklyn Museum, Brooklyn, New York",
-	"Canton Art Institute, Canton, Ohio",
-	"Crocker Art Museum, Sacramento, California",
-	"Denver Art Museum, Denver, Colorado",
-	"Fine Arts Museums of San Francisco, San Francisco, California",
-	"Fort Wayne Museum of Art, Fort Wayne, Indiana",
-	"Fresno Art Museum, Fresno, California",
-	"Indianapolis Museum of Art, Indianapolis, Indiana",
-	"Laguna Beach Museum of Art, Laguna Beach, California",
-	"Los Angeles County Museum of Art, Los Angeles, California",
-	"Milwaukee Art Museum, Milwaukee, Wisconsin",
-	"Oakland Museum of California, Oakland, California",
-	"Palm Springs Desert Museum, Palm Springs, California",
-	"San Francisco Museum of Modern Art, San Francisco, California",
-	"San Jose Museum of Art, San Jose, California",
-	"Seattle Art Museum, Seattle, Washington",
-	"Tucson Museum of Art, Tucson, Arizona",
+	"Achenbach Foundation, San Francisco, California",
+	"Arizona State University Art Museum, Tempe, Arizona",
+	"Barrington Arts Center, Barrington, Illinois",
+	"Davidson College, Davidson, North Carolina",
+	"De Anza College, Cupertino, California",
+	"Minnesota Museum of Art, St. Paul, Minnesota",
+	"Monterey Peninsula Museum of Art, Monterey, California",
+	"Northern Arizona University Art Museum, Flagstaff, Arizona",
+	"Phoenix Art Museum, Phoenix, Arizona",
+	"Portsmouth Community Arts Center, Portsmouth, Oregon",
+	"Santa Barbara Museum of Art, Santa Barbara, California",
+	"Strasbourg Museum of Contemporary Art, Strasbourg, France",
+	"University of Minnesota, St. Paul, Minnesota",
 ];
 
 export default function Museums() {

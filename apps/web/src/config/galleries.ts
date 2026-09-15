@@ -10,5 +10,5 @@ export const galleries = [
 	{ id: 8, title: "Gallery 1" },
 	{ id: 9, title: "Gallery 2" },
 	{ id: 10, title: "Gallery 3" },
-	{ id: 11, title: "Gallery 4" },
+	{ id: 11, title: "Luminous Rhythms" },
 ];

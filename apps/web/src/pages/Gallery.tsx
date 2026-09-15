@@ -37,7 +37,7 @@ console.log("Paintings in Gallery component:", paintings);
 					</h1>
 
 					<p className="mx-auto mt-6 max-w-3xl leading-8 text-gray-600 dark:text-zinc-300">
-						{galleryId === 0 ? "In my current paintings, I incorporate mylar to further explore the concept of hybridization. In water paintings, for example, I manipulate the mylar to mimic patterns and movement within the water. Similar to the abraded aluminum areas, portions of the mylar are left untouched to define the image, while others are enhanced with transparent or opaque layers of paint." 
+						{galleryId === 0 ? "In my current paintings, I incorporate mylar to further explore the concept of hybridization. In the water paintings, for example, I manipulate the mylar to mimic patterns and movement within the water. Similar to the abraded aluminum areas, portions of the mylar are left untouched to define the image, while others are enhanced with transparent or opaque layers of paint." 
 						: "Water-inspired contemporary paintings exploring reflection, movement, atmosphere, and light."}
 					</p>
 				</header>
@@ -46,24 +46,51 @@ console.log("Paintings in Gallery component:", paintings);
 					<p className="mt-4 max-w-3xl leading-8 text-gray-600 dark:text-zinc-300">
 						No paintings have been added to this gallery yet.
 					</p>
-				) : (
-					//<div className="grid grid-cols-1 gap-12 md:grid-cols-2 xl:gap-16">
-					<div
-						className={
-							galleryId === 7
-								? "galleryCorporate"
-								: "grid grid-cols-1 gap-12 md:grid-cols-2 xl:gap-16llery"
-						}
-					>
-						{paintings.map((painting) => (
-							<ArtworkCard
-								key={painting.id}
-								painting={painting}
-								galleryId={galleryId}
-							/>
-						))}{" "}
-					</div>
-				)}
+						) : galleryId === 11 ? (
+							<div className="space-y-12">
+								{/* Main painting */}
+								<div className="mx-auto max-w-3xl">
+									{paintings
+										.filter((painting) => !painting.id.toLowerCase().includes("detail"))
+										.map((painting) => (
+											<ArtworkCard
+												key={painting.id}
+												painting={painting}
+												galleryId={galleryId}
+											/>
+										))}
+								</div>
+
+								{/* Detail images */}
+								<div className="grid grid-cols-1 gap-12 md:grid-cols-2 xl:gap-16">
+									{paintings
+										.filter((painting) => painting.id.toLowerCase().includes("detail"))
+										.map((painting) => (
+											<ArtworkCard
+												key={painting.id}
+												painting={painting}
+												galleryId={galleryId}
+											/>
+										))}
+								</div>
+							</div>
+						) : (
+							<div
+								className={
+									galleryId === 7
+										? "galleryCorporate"
+										: "grid grid-cols-1 gap-12 md:grid-cols-2 xl:gap-16"
+								}
+							>
+								{paintings.map((painting) => (
+									<ArtworkCard
+										key={painting.id}
+										painting={painting}
+										galleryId={galleryId}
+									/>
+								))}
+							</div>
+						)}
 			</div>
 		</PageTransition>
 	);
