@@ -53,7 +53,7 @@ export default function Contact() {
 					</p>
 				</header>
 
-				<section className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+				<section className="mb-4 text-2xl font-light text-gray-900 dark:text-zinc-100">
 					<h2 className="mb-4 text-2xl font-light">Contact David</h2>
 
 					<p className="leading-8">
@@ -64,10 +64,18 @@ export default function Contact() {
 							davidtkesslerstudios@gmail.com
 						</a>
 					</p>
+					<p className="leading-8">
+						<a
+							href="https://en.wikipedia.org/wiki/David_T._Kessler" target="_blank"
+							className="text-blue-600 hover:underline dark:text-blue-400"
+						>
+							https://en.wikipedia.org/wiki/David_T._Kessler
+						</a>
+					</p>					
 				</section>
 
 				<section>
-					<h2 className="mb-8 text-center text-2xl font-light">
+					<h2 className="mb-8 text-center text-2xl font-light text-gray-900 dark:text-zinc-100">
 						Representing Galleries
 					</h2>
 
