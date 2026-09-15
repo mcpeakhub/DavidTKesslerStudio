@@ -1,10 +1,7 @@
 export type NavigationItem = {
 	title: string;
 	path?: string;
-	children?: {
-		title: string;
-		path: string;
-	}[];
+	children?: NavigationItem[];
 };
 
 export const navigation: NavigationItem[] = [
@@ -15,13 +12,24 @@ export const navigation: NavigationItem[] = [
 	{
 		title: "Galleries",
 		children: [
-			{ title: "Gallery 1", path: "/gallery/1" },
-			{ title: "Gallery 2", path: "/gallery/2" },
-			{ title: "Gallery 3", path: "/gallery/3" },
-			{ title: "Gallery 4", path: "/gallery/4" },
-			{ title: "Gallery 5", path: "/gallery/5" },
-			{ title: "Gallery 6", path: "/gallery/6" },
+			{ title: "Gallery 1 - (4' x 6')", path: "/gallery/8" },
+			{ title: "Gallery 2 - (4' x 7')", path: "/gallery/9" },
+			{ title: "Gallery 3 - (5' x 7')", path: "/gallery/10" },
+			{ title: "Gallery 4", path: "/gallery/11" },
 			{ title: "Public Commissions", path: "/gallery/7" },
+
+			{
+				title: "Archive Galleries",
+				children: [
+					{ title: "Gallery I", path: "/gallery/1" },
+					{ title: "Gallery II", path: "/gallery/2" },
+					{ title: "Gallery III", path: "/gallery/3" },
+					{ title: "Gallery IV", path: "/gallery/4" },
+					{ title: "Gallery V", path: "/gallery/5" },
+					{ title: "Gallery VI", path: "/gallery/6" },
+				],
+			},
+
 		],
 	},
 

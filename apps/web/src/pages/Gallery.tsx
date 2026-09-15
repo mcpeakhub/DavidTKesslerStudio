@@ -22,6 +22,8 @@ export default function Gallery() {
 		}
 	}, [id]);
 
+console.log("Paintings in Gallery component:", paintings);
+
 	return (
 		<PageTransition>
 			<div className="space-y-16">

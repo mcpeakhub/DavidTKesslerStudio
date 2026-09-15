@@ -1,9 +1,12 @@
 import { ReactNode, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { ChevronRight, Menu, X } from "lucide-react";
 import { site } from "../config/site";
 import ThemeToggle from "./ThemeToggle";
-import { navigation } from "../config/navigation";
+import {
+	navigation,
+	type NavigationItem,
+} from "../config/navigation";
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
 	[
@@ -14,6 +17,104 @@ const navLinkClass = ({ isActive }: { isActive: boolean }) =>
 			? "text-black after:w-full dark:text-white"
 			: "text-gray-600 after:w-0 hover:after:w-full dark:text-zinc-300",
 	].join(" ");
+
+const dropdownLinkClass = ({ isActive }: { isActive: boolean }) =>
+	[
+		"block w-full rounded-md px-3 py-2 text-left transition-colors",
+		isActive
+			? "bg-gray-100 text-black dark:bg-zinc-800 dark:text-white"
+			: "text-gray-600 hover:bg-gray-100 hover:text-black dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white",
+	].join(" ");
+
+function DesktopDropdownItem({ item }: { item: NavigationItem }) {
+	if (!item.children) {
+		return (
+			<NavLink
+				to={item.path!}
+				className={dropdownLinkClass}
+			>
+				{item.title}
+			</NavLink>
+		);
+	}
+
+	return (
+		<div className="group/submenu relative">
+			<div className="flex cursor-default items-center justify-between rounded-md px-3 py-2 text-gray-600 transition-colors hover:bg-gray-100 hover:text-black dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white">
+				<span>{item.title}</span>
+				<ChevronRight size={16} />
+			</div>
+
+			<div className="pointer-events-none absolute left-full top-0 w-56 rounded-xl border border-gray-200 bg-white p-3 opacity-0 shadow-xl transition-all duration-200 group-hover/submenu:pointer-events-auto group-hover/submenu:opacity-100 dark:border-zinc-800 dark:bg-zinc-900">
+				<div className="mb-2 text-xs uppercase tracking-[0.25em] text-gray-400 dark:text-zinc-500">
+					{item.title}
+				</div>
+
+				<div className="mb-2 border-t border-gray-200 dark:border-zinc-800" />
+
+				<div className="space-y-1">
+					{item.children.map((child) => (
+						<DesktopDropdownItem
+							key={child.title}
+							item={child}
+						/>
+					))}
+				</div>
+			</div>
+		</div>
+	);
+}
+
+function MobileNavigationItem({
+	item,
+	closeMenu,
+	level = 0,
+}: {
+	item: NavigationItem;
+	closeMenu: () => void;
+	level?: number;
+}) {
+	if (!item.children) {
+		return (
+			<NavLink
+				to={item.path!}
+				onClick={closeMenu}
+				className={({ isActive }) =>
+					isActive
+						? "text-black dark:text-white"
+						: "transition-colors hover:text-black dark:hover:text-white"
+				}
+			>
+				{item.title}
+			</NavLink>
+		);
+	}
+
+	return (
+		<div className="space-y-2">
+			<div
+				className={
+					level === 0
+						? "font-medium text-gray-900 dark:text-zinc-100"
+						: "pt-1 font-medium text-gray-700 dark:text-zinc-200"
+				}
+			>
+				{item.title}
+			</div>
+
+			<div className="ml-4 flex flex-col gap-2">
+				{item.children.map((child) => (
+					<MobileNavigationItem
+						key={child.title}
+						item={child}
+						closeMenu={closeMenu}
+						level={level + 1}
+					/>
+				))}
+			</div>
+		</div>
+	);
+}
 
 export default function Layout({ children }: { children: ReactNode }) {
 	const [open, setOpen] = useState(false);
@@ -52,7 +153,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 										{item.title} ▾
 									</button>
 
-									<div className="pointer-events-none absolute left-0 top-full w-64 translate-y-0 rounded-xl border border-gray-200 bg-white p-4 opacity-0 shadow-xl transition-all duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 dark:border-zinc-800 dark:bg-zinc-900">
+									<div className="pointer-events-none absolute left-0 top-full w-64 rounded-xl border border-gray-200 bg-white p-4 opacity-0 shadow-xl transition-all duration-200 group-hover:pointer-events-auto group-hover:opacity-100 dark:border-zinc-800 dark:bg-zinc-900">
 										<div className="mb-3 text-xs uppercase tracking-[0.25em] text-gray-400 dark:text-zinc-500">
 											{item.title}
 										</div>
@@ -61,20 +162,10 @@ export default function Layout({ children }: { children: ReactNode }) {
 
 										<div className="space-y-1">
 											{item.children.map((child) => (
-												<NavLink
+												<DesktopDropdownItem
 													key={child.title}
-													to={child.path}
-													className={({ isActive }) =>
-														[
-															"block rounded-md px-3 py-2 transition-colors",
-															isActive
-																? "bg-gray-100 text-black dark:bg-zinc-800 dark:text-white"
-																: "text-gray-600 hover:bg-gray-100 hover:text-black dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white",
-														].join(" ")
-													}
-												>
-													{child.title}
-												</NavLink>
+													item={child}
+												/>
 											))}
 										</div>
 									</div>
@@ -96,49 +187,13 @@ export default function Layout({ children }: { children: ReactNode }) {
 
 				{open && (
 					<nav className="flex flex-col gap-3 border-t border-gray-200 px-6 py-4 text-sm text-gray-600 dark:border-zinc-800 dark:text-zinc-300 xl:hidden">
-						{navigation.map((item) => {
-							if (!item.children) {
-								return (
-									<NavLink
-										key={item.title}
-										to={item.path!}
-										onClick={() => setOpen(false)}
-										className={({ isActive }) =>
-											isActive
-												? "text-black dark:text-white"
-												: "transition-colors hover:text-black dark:hover:text-white"
-										}
-									>
-										{item.title}
-									</NavLink>
-								);
-							}
-
-							return (
-								<div key={item.title} className="space-y-2">
-									<div className="font-medium text-gray-900 dark:text-zinc-100">
-										{item.title}
-									</div>
-
-									<div className="ml-4 flex flex-col gap-2">
-										{item.children.map((child) => (
-											<NavLink
-												key={child.title}
-												to={child.path}
-												onClick={() => setOpen(false)}
-												className={({ isActive }) =>
-													isActive
-														? "text-black dark:text-white"
-														: "transition-colors hover:text-black dark:hover:text-white"
-												}
-											>
-												{child.title}
-											</NavLink>
-										))}
-									</div>
-								</div>
-							);
-						})}
+						{navigation.map((item) => (
+							<MobileNavigationItem
+								key={item.title}
+								item={item}
+								closeMenu={() => setOpen(false)}
+							/>
+						))}
 
 						<div className="pt-2">
 							<ThemeToggle />
