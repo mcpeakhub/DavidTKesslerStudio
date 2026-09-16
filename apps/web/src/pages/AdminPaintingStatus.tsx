@@ -2,12 +2,12 @@ import { useEffect, useMemo, useState } from "react";
 import type { Painting } from "@david/shared";
 import { getPaintings } from "../services/api";
 
-type StatusOverrides = Record<string, boolean>;
+// type StatusOverrides = Record<string, boolean>;
 
 export default function AdminPaintingStatus() {
 	const [paintings, setPaintings] = useState<Painting[]>([]);
-	const [statusOverrides, setStatusOverrides] =
-		useState<StatusOverrides>({});
+	// const [statusOverrides, setStatusOverrides] =
+	// 	useState<StatusOverrides>({});
 
 	const [password, setPassword] = useState("");
 	const [selectedUnsold, setSelectedUnsold] = useState("");
@@ -18,62 +18,46 @@ export default function AdminPaintingStatus() {
 	const [message, setMessage] = useState("");
 	const [error, setError] = useState("");
 
-    useEffect(() => {
-        async function loadData() {
-            try {
-                // Load the paintings first.
-                const paintingData = await getPaintings();
-                setPaintings(paintingData);
+	useEffect(() => {
+		async function loadData() {
+			try {
+				const paintingData = await getPaintings();
 
-                // Then try to load any live sold-status overrides.
-                try {
-                    const response = await fetch("/api/painting-status");
+				if (!cancelled) {
+					setPaintings(paintingData);
+				}
+			} catch (err) {
+				console.error(err);
 
-                    const contentType =
-                        response.headers.get("content-type");
+				if (!cancelled) {
+					setError(
+						"Unable to load the painting administration page.",
+					);
+				}
+			} finally {
+				if (!cancelled) {
+					setLoading(false);
+				}
+			}
+		}
 
-                    if (
-                        response.ok &&
-                        contentType?.includes("application/json")
-                    ) {
-                        const statuses =
-                            (await response.json()) as StatusOverrides;
+		let cancelled = false;
 
-                        setStatusOverrides(statuses);
-                    } else {
-                        console.warn(
-                            "Painting status service is not available. Using JSON painting statuses.",
-                        );
-                    }
-                } catch (statusError) {
-                    console.warn(
-                        "Painting status service is not available. Using JSON painting statuses.",
-                        statusError,
-                    );
-                }
-            } catch (err) {
-                console.error(err);
+		loadData();
 
-                setError(
-                    "Unable to load the painting administration page.",
-                );
-            } finally {
-                setLoading(false);
-            }
-        }
+		return () => {
+			cancelled = true;
+		};
+	}, []);
 
-        loadData();
-    }, []);
-
-	const effectivePaintings = useMemo(() => {
-		return paintings.map((painting) => ({
-			...painting,
-			sold:
-				statusOverrides[painting.id] ??
-				painting.sold ??
-				false,
-		}));
-	}, [paintings, statusOverrides]);
+	const effectivePaintings = useMemo(
+		() =>
+			paintings.filter(
+				(painting) =>
+					!painting.id.toLowerCase().includes("detail"),
+			),
+		[paintings],
+	);
 
 	const unsoldPaintings = useMemo(
 		() =>
@@ -162,10 +146,16 @@ export default function AdminPaintingStatus() {
                 );
             }
 
-			setStatusOverrides((current) => ({
-				...current,
-				[paintingId]: sold,
-			}));
+			setPaintings((current) =>
+				current.map((item) =>
+					item.id === paintingId
+						? {
+								...item,
+								sold,
+							}
+						: item,
+				),
+			);
 
 			if (sold) {
 				setSelectedUnsold("");
@@ -270,7 +260,7 @@ export default function AdminPaintingStatus() {
 						</option>
 
 						{unsoldPaintings
-                            .filter((painting) => !painting.id.toLowerCase().includes("detail"))
+                            // .filter((painting) => !painting.id.toLowerCase().includes("detail"))
                             .map((painting) => (
 							<option
 								key={painting.id}
