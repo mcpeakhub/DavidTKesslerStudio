@@ -1,10 +1,10 @@
 {
-  "id": "luminous-shallows",
-  "title": "Luminous Shallows",
-  "medium": "acrylic on aluminum",
-  "dimensions": "48\" x 72\"",
-  "sold": true,
-  "originalImage": "LuminousShallows.jpg",
-  "dateAdded": "2026-07-04",
-  "description": ""
+    "id":  "luminous-shallows",
+    "title":  "Luminous Shallows",
+    "medium":  "acrylic on aluminum",
+    "dimensions":  "48\" x 72\"",
+    "sold":  true,
+    "originalImage":  "luminous-shallows.jpg",
+    "dateAdded":  "2026-07-04",
+    "description":  ""
 }
