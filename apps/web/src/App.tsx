@@ -10,6 +10,7 @@ import Museums from "./pages/Museums";
 import SoloExhibitions from "./pages/SoloExhibitions";
 import GroupExhibitions from "./pages/GroupExhibitions";
 import PaintingOnMetal from "./pages/PaintingOnMetal";
+import AdminPaintingStatus from "./pages/AdminPaintingStatus";
 
 export default function App() {
 	return (
@@ -29,6 +30,10 @@ export default function App() {
 					path="/painting-on-metal"
 					element={<PaintingOnMetal />}
 				/>
+				<Route
+					path="/admin/painting-status"
+					element={<AdminPaintingStatus />}
+				/>				
 				<Route path="/about" element={<About />} />
 				<Route path="/contact" element={<Contact />} />
 			</Routes>

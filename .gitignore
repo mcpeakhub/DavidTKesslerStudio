@@ -56,3 +56,5 @@ todo.txt
 
 # utility scripts
 scripts/
+# Local Netlify folder
+.netlify

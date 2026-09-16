@@ -1,78 +1,120 @@
 import type { Painting } from "@david/shared";
 
 type PaintingModule = {
-	default: Painting;
+	default: Omit<Painting, "gallery"> & {
+		gallery?: number;
+	};
 };
+
+type StatusOverrides = Record<string, boolean>;
 
 const modules = import.meta.glob<PaintingModule>(
 	"../../../../content/galleries/gallery*/*.json",
-	{
-		eager: true,
-	},
+	{ eager: true },
 );
 
 function loadPaintings(): Painting[] {
 	return Object.entries(modules).map(([path, module]) => {
-		const galleryMatch = path.match(/gallery(\d+)/);
-		const gallery = galleryMatch ? Number(galleryMatch[1]) : 0;
+		const match = path.match(/gallery(\d+)/);
 
-		const painting = module.default;
+		const galleryFromFolder = match
+			? Number(match[1])
+			: module.default.gallery;
+
+		if (galleryFromFolder === undefined) {
+			throw new Error(
+				`Unable to determine gallery number for ${path}`,
+			);
+		}
 
 		return {
-			...painting,
-			gallery,
+			...module.default,
+			gallery: galleryFromFolder,
 			image:
-				painting.image ??
-				`/images/gallery${gallery}/${painting.id}.jpg`,
-		};
+				module.default.image ??
+				`/images/gallery${galleryFromFolder}/${module.default.originalImage}`,
+		} as Painting;
 	});
 }
 
 const paintings = loadPaintings();
 
-export const getPaintings = async (): Promise<Painting[]> => {
-	return paintings;
-};
+/*
+ * Retrieve live Sold/Available overrides from the Netlify Function.
+ *
+ * If the function is unavailable for any reason, the site falls back
+ * to the sold value stored in each painting's JSON file.
+ */
+async function getStatusOverrides(): Promise<StatusOverrides> {
+	try {
+		const response = await fetch("/api/painting-status");
 
-export const getPainting = async (id: string): Promise<Painting> => {
-	const painting = paintings.find((painting) => painting.id === id);
+		if (!response.ok) {
+			console.warn(
+				"Painting status service unavailable. Using JSON statuses.",
+			);
+			return {};
+		}
 
-	if (!painting) {
-		throw new Error(`Painting not found: ${id}`);
+		const contentType = response.headers.get("content-type");
+
+		if (!contentType?.includes("application/json")) {
+			console.warn(
+				"Painting status service returned a non-JSON response. Using JSON statuses.",
+			);
+			return {};
+		}
+
+		return (await response.json()) as StatusOverrides;
+	} catch (error) {
+		console.warn(
+			"Unable to retrieve painting status overrides. Using JSON statuses.",
+			error,
+		);
+
+		return {};
 	}
+}
 
-	return painting;
+/*
+ * Apply live Sold/Available overrides to the static painting data.
+ *
+ * An override takes precedence over the sold value in the JSON file.
+ */
+async function getPaintingsWithStatuses(): Promise<Painting[]> {
+	const statusOverrides = await getStatusOverrides();
+
+	return paintings.map((painting) => ({
+		...painting,
+		sold:
+			statusOverrides[painting.id] ??
+			painting.sold ??
+			false,
+	}));
+}
+
+export const getPaintings = async (): Promise<Painting[]> => {
+	return getPaintingsWithStatuses();
 };
 
-export const getGallery = async (id: number): Promise<Painting[]> => {
-	return paintings.filter((painting) => painting.gallery === id);
+export const getPainting = async (
+	id: string,
+): Promise<Painting | undefined> => {
+	const paintingsWithStatuses =
+		await getPaintingsWithStatuses();
+
+	return paintingsWithStatuses.find(
+		(painting) => painting.id === id,
+	);
 };
 
+export const getGallery = async (
+	gallery: number,
+): Promise<Painting[]> => {
+	const paintingsWithStatuses =
+		await getPaintingsWithStatuses();
 
-
-
-// This is the code for making a separate API call to get the paintings from a backend server. 
-// However, since we are now loading the paintings from local JSON files, this code is commented out. 
-// You can uncomment and use it if you decide to switch back to using an API.
-
-// import axios from "axios";
-// import type { Painting } from "@david/shared";
-
-// const api = axios.create({
-// 	baseURL: import.meta.env.VITE_API_URL ?? "http://localhost:3001/api",
-// });
-
-// export const getPaintings = async (): Promise<Painting[]> => {
-// 	const res = await api.get("/paintings");
-// 	return res.data;
-// };
-
-// export const getPainting = async (id: string): Promise<Painting> => {
-// 	const res = await api.get(`/paintings/${id}`);
-// 	return res.data;
-// };
-
-// export const getGallery = async (id: number): Promise<Painting[]> => {
-// 	const res = await api.get(`/galleries/${id}`);
-// 	return res.data;
-// };
+	return paintingsWithStatuses.filter(
+		(painting) => painting.gallery === gallery,
+	);
+};
