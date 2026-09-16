@@ -3,6 +3,7 @@ import type { Painting } from "@david/shared";
 type PaintingModule = {
 	default: Omit<Painting, "gallery"> & {
 		gallery?: number;
+		originalImage?: string;
 	};
 };
 
@@ -32,7 +33,9 @@ function loadPaintings(): Painting[] {
 			gallery: galleryFromFolder,
 			image:
 				module.default.image ??
-				`/images/gallery${galleryFromFolder}/${module.default.originalImage}`,
+				(module.default.originalImage
+					? `/images/gallery${galleryFromFolder}/${module.default.originalImage}`
+					: undefined),
 		} as Painting;
 	});
 }

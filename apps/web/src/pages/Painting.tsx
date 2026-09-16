@@ -16,27 +16,37 @@ export default function Painting() {
 	);
 	const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
-	useEffect(() => {
-		if (!id) return;
+useEffect(() => {
+	if (!id) return;
 
-		let cancelled = false;
+	let cancelled = false;
 
-		async function loadPainting() {
-			const data = await getPainting(id!);
-			const galleryItems = await getGallery(data.gallery);
+	async function loadPainting() {
+		const data = await getPainting(id!);
 
+		// Handle an invalid or missing painting ID.
+		if (!data) {
 			if (!cancelled) {
-				setPainting(data);
-				setGalleryPaintings(galleryItems);
+				setPainting(null);
+				setGalleryPaintings([]);
 			}
+			return;
 		}
 
-		loadPainting();
+		const galleryItems = await getGallery(data.gallery);
 
-		return () => {
-			cancelled = true;
-		};
-	}, [id]);
+		if (!cancelled) {
+			setPainting(data);
+			setGalleryPaintings(galleryItems);
+		}
+	}
+
+	loadPainting();
+
+	return () => {
+		cancelled = true;
+	};
+}, [id]);
 
 	if (!painting) {
 		return (
