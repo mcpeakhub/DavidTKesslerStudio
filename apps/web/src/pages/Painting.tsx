@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import type { Painting as PaintingType } from "@david/shared";
 import { getGallery, getPainting } from "../services/api";
-import { galleries } from "../config/galleries";
 import PageTransition from "../components/PageTransition";
 import ArtworkImage from "../components/ArtworkImage";
 import ArtworkMeta from "../components/ArtworkMeta";
@@ -68,10 +67,6 @@ export default function Painting() {
 			? galleryPaintings[currentIndex + 1]
 			: null;
 
-	const currentGallery = galleries.find(
-		(gallery) => gallery.id === painting.gallery,
-	);
-
 	return (
 		<PageTransition>
 			<div className="mx-auto max-w-5xl space-y-10">
@@ -86,49 +81,14 @@ export default function Painting() {
 					/>
 				</div>
 
-				<section className="mx-auto max-w-3xl">
-					<ArtworkMeta painting={painting} centered />
+				<section className="mx-auto max-w-4xl">
+					<ArtworkMeta
+						painting={painting}
+						previousPainting={previousPainting}
+						nextPainting={nextPainting}
+						centered
+					/>
 				</section>
-
-				<nav className="grid grid-cols-3 items-start gap-4 border-t border-gray-200 pt-8 text-sm dark:border-zinc-800">
-					<div>
-						{previousPainting && (
-							<Link
-								to={`/painting/${previousPainting.id}`}
-								className="text-gray-500 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
-							>
-								← Previous
-								<span className="mt-1 block text-gray-900 dark:text-zinc-100">
-									{previousPainting.title}
-								</span>
-							</Link>
-						)}
-					</div>
-
-					<div className="text-center">
-						<Link
-							to={`/gallery/${painting.gallery}`}
-							className="text-gray-500 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
-						>
-							{currentGallery?.title ??
-								`Gallery ${painting.gallery}`}
-						</Link>
-					</div>
-
-					<div className="text-right">
-						{nextPainting && (
-							<Link
-								to={`/painting/${nextPainting.id}`}
-								className="text-gray-500 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
-							>
-								Next →
-								<span className="mt-1 block text-gray-900 dark:text-zinc-100">
-									{nextPainting.title}
-								</span>
-							</Link>
-						)}
-					</div>
-				</nav>
 
 				{isLightboxOpen && (
 					<div
