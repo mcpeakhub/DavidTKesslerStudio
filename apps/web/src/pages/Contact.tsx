@@ -11,8 +11,7 @@ const galleries = [
 		name: "Mason Fine Art",
 		phone: "(404) 879-1500",
 		address: ["415 Plasters Ave NE Suite 100", "Atlanta, GA 30324"],
-		website:
-			"https://www.1stdibs.com/creators/david-kessler/art/prints-works-on-paper/",
+		website: "https://masonfineartandevents.com/artist/david-kessler",
 	},
 	{
 		name: "Plus One Gallery",
@@ -23,7 +22,7 @@ const galleries = [
 			"Fulham, London SW6 3EF",
 			"England",
 		],
-		website: "https://www.plusonegallery.com",
+		website: "https://www.plusonegallery.com/artists/204-david-t.-kessler/",
 	},
 	{
 		name: "West Broadway Gallery",

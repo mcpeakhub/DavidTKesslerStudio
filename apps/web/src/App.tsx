@@ -21,6 +21,7 @@ export default function App() {
 				<Route path="/painting/:id" element={<Painting />} />
 				<Route path="/corporate" element={<Corporate />} />
 				<Route path="/museums" element={<Museums />} />
+				<Route path="/commission/:id" element={<Gallery />} />
 				<Route path="/solo-exhibitions" element={<SoloExhibitions />} />
 				<Route
 					path="/group-exhibitions"
