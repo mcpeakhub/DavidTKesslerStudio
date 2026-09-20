@@ -12,9 +12,9 @@ export const navigation: NavigationItem[] = [
 	{
 		title: "Galleries",
 		children: [
-			{ title: "Gallery 1 - (4' x 6')", path: "/gallery/8" },
-			{ title: "Gallery 2 - (4' x 7')", path: "/gallery/9" },
-			{ title: "Gallery 3 - (5' x 7')", path: "/gallery/10" },
+			{ title: "Gallery 1", path: "/gallery/8" },
+			{ title: "Gallery 2", path: "/gallery/9" },
+			{ title: "Gallery 3", path: "/gallery/10" },
 			{ title: "Luminous Rhythms with Details", path: "/gallery/11" },
 			{ title: "Public Commissions", path: "/gallery/7" },
 

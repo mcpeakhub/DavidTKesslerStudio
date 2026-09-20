@@ -2,7 +2,7 @@ export const galleries = [
 	{ id: 0, title: "New Paintings" },
 	{ id: 1, title: "Gallery I" },
 	{ id: 2, title: "Gallery II" },
-	{ id: 3, title: "Gallery II" },
+	{ id: 3, title: "Gallery III" },
 	{ id: 4, title: "Gallery IV" },
 	{ id: 5, title: "Gallery V" },
 	{ id: 6, title: "Gallery VI" },

@@ -29,7 +29,7 @@ export default function PaintingOnMetal() {
 					<div className="space-y-6 leading-8 text-gray-700 dark:text-zinc-300">
 						<p>
 							<strong className="font-medium text-gray-900 dark:text-zinc-100">
-								David Kessler
+								David T. Kessler
 							</strong>{" "}
 							[American, b. 1950] is an extraordinary painter who
 							has created a unique art form that holds a
