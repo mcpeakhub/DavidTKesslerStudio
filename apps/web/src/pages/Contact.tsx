@@ -62,15 +62,7 @@ export default function Contact() {
 						>
 							davidtkesslerstudios@gmail.com
 						</a>
-					</p>
-					<p className="leading-8">
-						<a
-							href="https://en.wikipedia.org/wiki/David_T._Kessler" target="_blank"
-							className="text-blue-600 hover:underline dark:text-blue-400"
-						>
-							https://en.wikipedia.org/wiki/David_T._Kessler
-						</a>
-					</p>					
+					</p>			
 				</section>
 
 				<section>
@@ -115,6 +107,36 @@ export default function Contact() {
 							</div>
 						))}
 					</div>
+				</section>
+
+				<section className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+					<h2 className="mb-8 text-center text-2xl font-light text-gray-900 dark:text-zinc-100">
+						Articles
+					</h2>
+					<p className="leading-8">
+						<a
+							href="https://en.wikipedia.org/wiki/David_T._Kessler" target="_blank"
+							className="text-blue-600 hover:underline dark:text-blue-400"
+						>
+							https://en.wikipedia.org/wiki/David_T._Kessler
+						</a>
+					</p>
+					<p className="leading-8">
+						<a
+							href="https://www.plusonegallery.com/blog/147/" target="_blank"
+							className="text-blue-600 hover:underline dark:text-blue-400"
+						>
+							Artist in Focus: David T. Kessler
+						</a>
+					</p>						
+					<p className="leading-8">
+						<a
+							href="https://www.plusonegallery.com/blog/160/#:~:text=David%20T.%20Kessler" target="_blank"
+							className="text-blue-600 hover:underline dark:text-blue-400"
+						>
+							Hyperrealism Today
+						</a>
+					</p>					
 				</section>
 			</div>
 		</PageTransition>
