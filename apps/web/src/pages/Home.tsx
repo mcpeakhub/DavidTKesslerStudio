@@ -5,7 +5,6 @@ import { getPaintings } from "../services/api";
 import { galleries } from "../config/galleries";
 import { site } from "../config/site";
 import PageTransition from "../components/PageTransition";
-// import ArtworkImage from "../components/ArtworkImage";
 import GalleryPreviewCard from "../components/GalleryPreviewCard";
 import HeroSlideshow from "../components/HeroSlideshow";
 
