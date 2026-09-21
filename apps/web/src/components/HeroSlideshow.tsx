@@ -149,9 +149,8 @@ export default function HeroSlideshow({
 				<p className="mt-1 text-sm text-gray-500 dark:text-zinc-400">
 					{currentPainting.medium}
 					{currentPainting.dimensions
-						? ` · ${currentPainting.dimensions}`
-						: ""}
-					{currentPainting.year ? ` · ${currentPainting.year}` : ""}
+						? ` · ${currentPainting.dimensions} · available`
+						: ""} 
 				</p>
 			</div>
 
