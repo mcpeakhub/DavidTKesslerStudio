@@ -1,6 +1,33 @@
+import { useEffect } from "react";
 import PageTransition from "../components/PageTransition";
 
 export default function PaintingOnMetal() {
+	useEffect(() => {
+		// Page-specific SEO
+		document.title =
+			"Painting on Metal | David Kessler | Photorealism";
+
+		const description =
+			"Explore David Kessler's painting-on-metal technique, combining contemporary photorealism with polished and abraded aluminum to create realistic waterscapes exploring light, reflection, depth, and movement.";
+
+		let metaDescription = document.querySelector(
+			'meta[name="description"]'
+		) as HTMLMetaElement | null;
+
+		if (!metaDescription) {
+			metaDescription = document.createElement("meta");
+			metaDescription.name = "description";
+			document.head.appendChild(metaDescription);
+		}
+
+		metaDescription.content = description;
+
+		return () => {
+			document.title =
+				"David Kessler | David T. Kessler | Contemporary Artist";
+		};
+	}, []);
+
 	return (
 		<PageTransition>
 			<div className="mx-auto max-w-4xl space-y-10">
@@ -12,13 +39,18 @@ export default function PaintingOnMetal() {
 					<h1 className="mt-3 text-5xl font-light tracking-wide text-gray-900 dark:text-zinc-100">
 						Painting on Metal
 					</h1>
+
+					<p className="mx-auto max-w-2xl text-lg font-light text-gray-600 dark:text-zinc-400">
+						Contemporary photorealism on polished and abraded
+						aluminum
+					</p>
 				</header>
 
 				<div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-start">
 					<div className="overflow-hidden rounded-lg bg-gray-100 shadow-sm dark:bg-zinc-900">
 						<img
 							src="/images/closeup.jpg"
-							alt="Close-up detail of a David T. Kessler painting on metal"
+							alt="David Kessler photorealist painting on polished and abraded aluminum (paining on metal)"
 							className="block h-auto w-full"
 							onError={(event) => {
 								event.currentTarget.style.display = "none";
@@ -39,7 +71,7 @@ export default function PaintingOnMetal() {
 						</p>
 
 						<p>
-							Using a perfected technique in the photo-realist
+							Using a perfected technique in the photorealist
 							tradition developed over the past twenty-five years,
 							the artist has created a series of spectacular
 							waterscape paintings that incorporate realistic
