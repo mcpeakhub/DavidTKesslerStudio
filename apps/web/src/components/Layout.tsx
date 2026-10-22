@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState  } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { ChevronRight, Menu, X } from "lucide-react";
 import { site } from "../config/site";
@@ -117,7 +117,20 @@ function MobileNavigationItem({
 }
 
 export default function Layout({ children }: { children: ReactNode }) {
-	const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
+
+    const [dark, setDark] = useState(() => {
+        return localStorage.getItem("theme") === "dark";
+    });
+
+    useEffect(() => {
+        document.documentElement.classList.toggle("dark", dark);
+        localStorage.setItem("theme", dark ? "dark" : "light");
+    }, [dark]);
+
+    const toggleTheme = () => {
+        setDark((value) => !value);
+    };
 
 	return (
 		<div className="flex min-h-screen flex-col bg-white text-gray-900 transition-colors dark:bg-black dark:text-zinc-100">
@@ -173,7 +186,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 							);
 						})}
 
-						<ThemeToggle />
+						<ThemeToggle dark={dark} onToggle={toggleTheme} />
 					</nav>
 
 					<button
@@ -196,7 +209,13 @@ export default function Layout({ children }: { children: ReactNode }) {
 						))}
 
 						<div className="pt-2">
-							<ThemeToggle />
+							<ThemeToggle
+								dark={dark}
+								onToggle={() => {
+									toggleTheme();
+									setOpen(false);
+								}}
+							/>
 						</div>
 					</nav>
 				)}
