@@ -92,7 +92,8 @@ export default function HeroSlideshow({
 			onMouseLeave={() => setPaused(false)}
 			aria-label="Available paintings slideshow"
 		>
-			<div className="relative h-[68vh] min-h-[420px] overflow-hidden rounded-xl bg-zinc-900">
+			{/* <div className="relative h-[68vh] min-h-[420px] overflow-hidden rounded-xl bg-zinc-900"> */}
+			<div className="relative h-[32vh] min-h-[180px] overflow-hidden rounded-xl bg-zinc-900 md:h-[68vh] md:min-h-[420px]">
 				<AnimatePresence initial={false}>
 					<motion.div
 						key={currentPainting.id}
@@ -113,7 +114,8 @@ export default function HeroSlideshow({
 							<ArtworkImage
 								painting={currentPainting}
 								loading="eager"
-								className="block h-[68vh] min-h-[420px] w-full object-contain"
+								// className="block h-[68vh] min-h-[420px] w-full object-contain"
+								className="block h-[32vh] min-h-[180px] w-full object-contain md:h-[68vh] md:min-h-[420px]"
 							/>
 						</Link>
 					</motion.div>
