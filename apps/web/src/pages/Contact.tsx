@@ -8,6 +8,18 @@ const galleries = [
 		website: "https://www.deandaygallery.com/kessler-david",
 	},
 	{
+		name: "David Bonner Gallery",
+		phone: "(929) 226-7800",
+		address: ["4 E 81st St", "New York, NY 10028"],
+		website: "By appointment only",
+	},
+	{
+		name: "David Bonner Gallery",
+		phone: "(480) 941-8500",
+		address: ["7040 E Main St", "Scottsdale, AZ 85251"],
+		website: "By appointment only",
+	},		
+	{
 		name: "Mason Fine Art",
 		phone: "(404) 879-1500",
 		address: ["415 Plasters Ave NE Suite 100", "Atlanta, GA 30324"],
@@ -23,12 +35,6 @@ const galleries = [
 			"England",
 		],
 		website: "https://www.plusonegallery.com/artists/204-david-t.-kessler/",
-	},
-	{
-		name: "West Broadway Gallery",
-		phone: "(646) 335-5155",
-		address: ["383 West Broadway", "New York, NY 10012"],
-		website: "By appointment only",
 	},
 ];
 
