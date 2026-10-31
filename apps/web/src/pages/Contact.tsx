@@ -11,14 +11,14 @@ const galleries = [
 		name: "David Bonner Gallery",
 		phone: "(929) 226-7800",
 		address: ["4 E 81st St", "New York, NY 10028"],
-		website: "By appointment only",
+		website: "https://bonnerdavid.com/artists/134-david-kessler/",
 	},
 	{
 		name: "David Bonner Gallery",
 		phone: "(480) 941-8500",
 		address: ["7040 E Main St", "Scottsdale, AZ 85251"],
-		website: "By appointment only",
-	},		
+		website: "https://bonnerdavid.com/artists/134-david-kessler/",
+	},
 	{
 		name: "Mason Fine Art",
 		phone: "(404) 879-1500",
