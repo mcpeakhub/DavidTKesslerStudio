@@ -1,5 +1,5 @@
 [build]
-  command = "npm --prefix apps/web run build"
+  command = "npx puppeteer browsers install chrome && npm --prefix apps/web run build:seo"
   publish = "apps/web/dist"
   functions = "netlify/functions"
 

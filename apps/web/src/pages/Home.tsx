@@ -19,27 +19,27 @@ export default function Home() {
 	useEffect(() => {
 		getPaintings().then(setPaintings);
 
-		const structuredData = {
-			"@context": "https://schema.org",
-			"@type": "Person",
-			name: "David T. Kessler",
-			alternateName: "David Kessler",
-			url: "https://davidtkesslerstudios.com",
-			jobTitle: "Contemporary Artist",
-			description:
-				"David T. Kessler, also known as David Kessler, is a contemporary realist artist known for photorealistic paintings on polished and abraded metal, exploring water, reflections, light, and movement.",
-		};
+		// const structuredData = {
+		// 	"@context": "https://schema.org",
+		// 	"@type": "Person",
+		// 	name: "David T. Kessler",
+		// 	alternateName: "David Kessler",
+		// 	url: "https://davidtkesslerstudios.com",
+		// 	jobTitle: "Contemporary Artist",
+		// 	description:
+		// 		"David T. Kessler, also known as David Kessler, is a contemporary realist artist known for photorealistic paintings on polished and abraded metal, exploring water, reflections, light, and movement.",
+		// };
 
-		const script = document.createElement("script");
-		script.type = "application/ld+json";
-		script.text = JSON.stringify(structuredData);
-		script.id = "artist-structured-data";
+		// const script = document.createElement("script");
+		// script.type = "application/ld+json";
+		// script.text = JSON.stringify(structuredData);
+		// script.id = "artist-structured-data";
 
-		document.head.appendChild(script);
+		// document.head.appendChild(script);
 
-		return () => {
-			document.getElementById("artist-structured-data")?.remove();
-		};
+		// return () => {
+		// 	document.getElementById("artist-structured-data")?.remove();
+		// };
 	}, []);
 
 	return (

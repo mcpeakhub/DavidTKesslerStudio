@@ -4,8 +4,10 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "vite",
+		"dev": "vite --host 0.0.0.0 --open",
 		"build": "tsc --noEmit && vite build",
+		"prerender": "node scripts/prerender.mjs",
+		"build:seo": "npm run build && npm run prerender",
 		"lint": "eslint .",
 		"preview": "vite preview"
 	},

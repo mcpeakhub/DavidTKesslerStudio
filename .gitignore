@@ -56,5 +56,7 @@ todo.txt
 
 # utility scripts
 scripts/
+!/apps/web/scripts/
+!/apps/web/scripts/prerender.mjs
 # Local Netlify folder
 .netlify
