@@ -13,8 +13,7 @@ export default function Home() {
 	const galleryOrder = [0, 8, 9, 10, 11, 7, 1, 2, 3, 4, 5, 6];
 
 	const sortedGalleries = [...galleries].sort(
-		(a, b) =>
-			galleryOrder.indexOf(a.id) - galleryOrder.indexOf(b.id)
+		(a, b) => galleryOrder.indexOf(a.id) - galleryOrder.indexOf(b.id),
 	);
 
 	useEffect(() => {
@@ -28,7 +27,7 @@ export default function Home() {
 			url: "https://davidtkesslerstudios.com",
 			jobTitle: "Contemporary Artist",
 			description:
-				"David T. Kessler, also known as David Kessler, is a contemporary artist known for photorealism and distinctive paintings on polished and abraded metal exploring water, paintings on metal, reflections, light, and movement.",
+				"David T. Kessler, also known as David Kessler, is a contemporary realist artist known for photorealistic paintings on polished and abraded metal, exploring water, reflections, light, and movement.",
 		};
 
 		const script = document.createElement("script");
@@ -66,9 +65,10 @@ export default function Home() {
 					</p>
 
 					<p className="mx-auto mt-5 max-w-2xl leading-8 text-gray-600 dark:text-zinc-400">
-						David Kessler is a contemporary realist artist known for his
-						distinctive paintings on polished and abraded aluminum, exploring
-						water, reflections, light, and movement.
+						David Kessler is a contemporary realist artist known for
+						his distinctive paintings on polished and abraded
+						aluminum, exploring water, reflections, light, and
+						movement.
 					</p>
 
 					<Link
